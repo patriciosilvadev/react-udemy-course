@@ -4,7 +4,7 @@ import Cartao from './cartao';
 class ListaCartoes extends React.Component {
   constructor(props){
     super(props);
-    this.state = { cliques: 0};
+    this.state = { cliques: 0 };
     this.addClique = this.addClique.bind(this);
   }
 
