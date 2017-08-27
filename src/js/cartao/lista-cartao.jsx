@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import ListaCartoes from './lista-cartoes';
 import Busca from '../busca/busca';
 
@@ -33,25 +34,12 @@ class ListaCartao extends React.Component {
   }
 
   componentDidMount(){
-    this.setState({
-      dados: [
-        {titulo: 'Titulo 1', descricao: 'Descrição 1', detalhe: 'Detalhe 1', imagem: 'http://materializecss.com/images/office.jpg', link: '#link'},
-        {titulo: 'Titulo 2', descricao: 'Descrição 2', detalhe: 'Detalhe 2', imagem: 'http://materializecss.com/images/office.jpg', link: '#link'},
-        {titulo: 'Titulo 3', descricao: 'Descrição 3', detalhe: 'Detalhe 3', imagem: 'http://materializecss.com/images/office.jpg', link: '#link'},
-        {titulo: 'Titulo 4', descricao: 'Descrição 4', detalhe: 'Detalhe 4', imagem: 'http://materializecss.com/images/office.jpg', link: '#link'},
-        {titulo: 'Titulo 5', descricao: 'Descrição 5', detalhe: 'Detalhe 5', imagem: 'http://materializecss.com/images/office.jpg', link: '#link'},
-        {titulo: 'Titulo 6', descricao: 'Descrição 6', detalhe: 'Detalhe 6', imagem: 'http://materializecss.com/images/office.jpg', link: '#link'},
-        {titulo: 'Titulo 7', descricao: 'Descrição 7', detalhe: 'Detalhe 7', imagem: 'http://materializecss.com/images/office.jpg', link: '#link'}
-      ],
-      servidor: [
-        {titulo: 'Titulo 1', descricao: 'Descrição 1', detalhe: 'Detalhe 1', imagem: 'http://materializecss.com/images/office.jpg', link: '#link'},
-        {titulo: 'Titulo 2', descricao: 'Descrição 2', detalhe: 'Detalhe 2', imagem: 'http://materializecss.com/images/office.jpg', link: '#link'},
-        {titulo: 'Titulo 3', descricao: 'Descrição 3', detalhe: 'Detalhe 3', imagem: 'http://materializecss.com/images/office.jpg', link: '#link'},
-        {titulo: 'Titulo 4', descricao: 'Descrição 4', detalhe: 'Detalhe 4', imagem: 'http://materializecss.com/images/office.jpg', link: '#link'},
-        {titulo: 'Titulo 5', descricao: 'Descrição 5', detalhe: 'Detalhe 5', imagem: 'http://materializecss.com/images/office.jpg', link: '#link'},
-        {titulo: 'Titulo 6', descricao: 'Descrição 6', detalhe: 'Detalhe 6', imagem: 'http://materializecss.com/images/office.jpg', link: '#link'},
-        {titulo: 'Titulo 7', descricao: 'Descrição 7', detalhe: 'Detalhe 7', imagem: 'http://materializecss.com/images/office.jpg', link: '#link'}
-      ]
+    let self = this;
+    axios.get('http://localhost:8000/servidor.php?dados=1').then(function(response){
+      self.setState({
+        dados: response.data,
+        servidor: response.data,
+      });
     });
   }
 
